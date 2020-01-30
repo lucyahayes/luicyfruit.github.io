@@ -72,10 +72,11 @@ for p in playlist_list:
     playlist_df = playlist_df.append(y, ignore_index = True)
 ```
 Now we have something that looks like this:
-|    | uri                                  | artist         | name                                                          |   popularity | release_date        | added_at                  |
-|----|--------------------------------------|----------------|---------------------------------------------------------------|--------------|---------------------|---------------------------|
-|  0 | spotify:track:6xEHCWUvalb0fNYuAo591v | Rob Araujo     | Nineteen                                                      |           35 | 2018-10-12 00:00:00 | 2019-07-09 20:22:42+00:00 |
-|  1 | spotify:track:6v96ZIpQUtWMSUqlBlTif6 | Rob Araujo     | Hike                                                          |           31 | 2018-04-03 00:00:00 | 2019-07-10 14:12:50+00:00 |
-|  2 | spotify:track:62VWmsNoDmqT0Mj9oHHFVh | Roy Hargrove   | Strasbourg / St. Denis                                        |           49 | 2008-01-01 00:00:00 | 2019-07-10 15:01:41+00:00 |
-|  3 | spotify:track:1W97IZUEKOaIVxG7GKJkL6 | Anomalie       | Velours                                                       |           46 | 2017-06-23 00:00:00 | 2019-07-10 17:28:40+00:00 |
-|  4 | spotify:track:0sCeNwt8xRCMR4NhKpMyBe | Herbie Hancock | Cantaloupe Island - Remastered 1999 / Rudy Van Gelder Edition |           61 | 1964-06-17 00:00:00 | 2019-07-10 17:30:22+00:00 |
+
+|    | uri                                  | artist         | name             | popularity | release_date| added_at   |
+|----|--------------------------------------|----------------|------------------|------------|-------------|------------|
+|  0 | spotify:track:6xEHCWUvalb0fNYuAo591v | Rob Araujo     | Nineteen         |         35 | 2018-10-12  | 2019-07-09 |
+|  1 | spotify:track:6v96ZIpQUtWMSUqlBlTif6 | Rob Araujo     | Hike             |         31 | 2018-04-03  | 2019-07-10 |
+|  2 | spotify:track:62VWmsNoDmqT0Mj9oHHFVh | Roy Hargrove   | Strasbourg       |         49 | 2008-01-01  | 2019-07-10 |
+|  3 | spotify:track:1W97IZUEKOaIVxG7GKJkL6 | Anomalie       | Velours          |         46 | 2017-06-23  | 2019-07-10 |
+|  4 | spotify:track:0sCeNwt8xRCMR4NhKpMyBe | Herbie Hancock | Cantaloupe Island|         61 | 1964-06-17  | 2019-07-10 |
