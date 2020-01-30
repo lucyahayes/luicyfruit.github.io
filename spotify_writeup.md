@@ -7,7 +7,8 @@ Whenever anyone asks me, "so what type of music do you listen to?", my usual ans
 # 1. Data Acquisition
 
 ## 1.1 Import Libraries
-```import spotipy
+```python
+import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import spotipy.util as util
 import simplejson as json
@@ -28,7 +29,8 @@ sns.set_palette("husl")
 ## 1.1 Accessing the Spotify API Credentials Flow
 
 Since I am accessing my own personal data, I used my credentials that are provided by your spotify web app. For different types of access, the API requires different Scopes to be used. This will require going through the authorization flow a few times in order to collect all relevant data. The first scope I will use is "playlist-read-collaborative", which will read in all of my playlists including those that are collaborative
-```scope = 'playlist-read-collaborative'
+```python
+scope = 'playlist-read-collaborative'
 token = util.prompt_for_user_token(username, scope, client_id = cid, client_secret = secret, redirect_uri = url)
 sp = spotipy.Spotify(auth=token)
 ```
@@ -38,14 +40,14 @@ You are then prompted by your browser to enter the URL redirect (which I just se
 
 My method for reading in the different playlist tracks was to first make a list of all playlists, and then writing a function that takes in a playlist, and returns a dataframe of all of the corresponding tracks and their information. Next, I add all those to a main dataframe to start building out my library. The method was as follows:
 
-```
+```python
 playlists = sp.user_playlists(username)
 playlist_list = []
 for i, playlist in enumerate(playlists['items']):
     playlist_list.append(playlist['uri'])
 ```
 
-```
+```python
 # Function to read in the Tracks and some Attributes of each Playlist
 def read_playlist(user, playlistID):
     c = ['uri', 'artist', 'name', 'popularity', 'release_date', 'added_at']
@@ -62,7 +64,7 @@ def read_playlist(user, playlistID):
     return tracks_df
 ```
 
-```
+```python
 # Append all tracks into a singular Dataframe
 playlist_df = pd.DataFrame(columns=['uri', 'artist', 'name', 'popularity', 'release_date', 'added_at'])
 for p in playlist_list:
@@ -71,7 +73,7 @@ for p in playlist_list:
 ```
 Now we have something that looks like this:
 |    | uri                                  | artist         | name                                                          |   popularity | release_date        | added_at                  |
-|---:|:-------------------------------------|:---------------|:--------------------------------------------------------------|-------------:|:--------------------|:--------------------------|
+|----|--------------------------------------|----------------|---------------------------------------------------------------|--------------|---------------------|---------------------------|
 |  0 | spotify:track:6xEHCWUvalb0fNYuAo591v | Rob Araujo     | Nineteen                                                      |           35 | 2018-10-12 00:00:00 | 2019-07-09 20:22:42+00:00 |
 |  1 | spotify:track:6v96ZIpQUtWMSUqlBlTif6 | Rob Araujo     | Hike                                                          |           31 | 2018-04-03 00:00:00 | 2019-07-10 14:12:50+00:00 |
 |  2 | spotify:track:62VWmsNoDmqT0Mj9oHHFVh | Roy Hargrove   | Strasbourg / St. Denis                                        |           49 | 2008-01-01 00:00:00 | 2019-07-10 15:01:41+00:00 |
