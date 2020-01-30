@@ -199,7 +199,7 @@ I call the read_tracks and audio_features functions on the top-tracks, merge tho
 ## 1.5 Read in Saved Tracks
 Reading in saved tracks required a new scope again ('user_saved_tracks'). This followed the same steps as reading in my top tracks except this time there was an added_at date, so I didn't need to use estimates. I used the read_tracks and audio_features function on this data, and appended to the main dataframe. The API limit was 20 songs (even though I have many more saved!) so this didn't account for too many more songs, especially seeing how some were duplicates. 
 
-Lastly, I removed those duplicates to get a dataframe with 570 entries, with the following variables (as defined in the [Spotify API Documentation] https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/):
+Lastly, I removed those duplicates to get a dataframe with 570 entries, with the following variables (as defined in the [Spotify API Documentation](https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/):
 
 - **Uri**: The Spotify URI for the track.
 - **Artist**: The Artist who performed the track
@@ -210,7 +210,7 @@ Generally speaking, songs that are being played a lot now will have a higher pop
 - **Release Date**: Date of release
 - **Added At**: Date saved, added to playlist, or estimated recently listening time
 - **Danceability**: Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.
-- **Energy**:	Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.
+- **Energy**:Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.
 - **Key**: The estimated overall key of the track. Integers map to pitches using standard Pitch Class notation 
 - **Loudness**:	The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.
 - **Mode**: Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.
@@ -223,4 +223,4 @@ Generally speaking, songs that are being played a lot now will have a higher pop
 - **Duration**: The duration of the track in milliseconds.
 - **Time Signature**: 	An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure)
 
-
+It is important to note the scale of these features: Valence, Liveness, Instrumentalness, Acousticness, Speechiness, Energy, and Danceability are all on a scale from 0 to 1, where Time Signature, Tempo, Popularity and Loudness are not. It is also important to point out that although key is numerical in this case, the integers should be treated as categories, as they follow the notes of the scale rather than having any real numerical value. The Spotify API Documentation also provides typical distributions of these metrics, many of which are not distrubuted normally. 
