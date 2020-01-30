@@ -1,0 +1,22 @@
+# Site settings
+author: Lucy Hayes
+title: Lucy Hayes Data Science
+header-img: img/39875853-header-wallpapers.jpg
+email: lucyannhayes@gmail.com
+copyright_name: Lucy Hayes
+description: > # this means to ignore newlines until "baseurl:"
+  Data Science | Machine Learning
+baseurl: "" # the subpath of your site, e.g. /blog
+twitter_username: 
+github_username:  luicyfruit
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+paginate: 5
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+
+gems: [jekyll-paginate, jekyll-feed]
+
+theme: jekyll-theme-minimal
