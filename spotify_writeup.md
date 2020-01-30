@@ -1,3 +1,8 @@
+---
+layout: page
+title: Spotify Music Taste
+---
+
 # What is My Music Taste?
 
 ## An analysis using the Spotify API
