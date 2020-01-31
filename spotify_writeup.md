@@ -287,9 +287,13 @@ I wanted to see who my top artists were, which came at a bit of a surprise! I di
 
 ## 2.2 Popularity
 I thought the popularity metric was very interesting and decided to look further into it. The distribution of my library's popularity looked like this:
-<img src="img/popularity_hist.png">
+
+<img width="500" height="500" src="img/popularity_hist.png">
+
 Since there were a lot of zeros (missing data), I dropped them from the dataset temporarily to dive a little deeper into this metric. I wanted to see how the seasons affected my music taste, i.e. do I listen to different levels of popular music in different seasons? 
+
 <img src="img/popularity_boxplot.png">
+
 Since spring looked like it was different between the other seasons, I decided to run an ANOVA to see if this trend was significant. 
 **Null Hypothesis**: Season has no affect on popularity of songs discovered
 **Alternate Hypothesis:** Season affects popularity of songs discovered
@@ -297,31 +301,23 @@ Since spring looked like it was different between the other seasons, I decided t
 results = ols('popularity ~ C(seasons)', data=temp).fit()
 results.summary()
 ```
-Given the results of this ANOVA, (p value < F - Statistic), I can reject the null hypothesis. I used a tukey HSD test to see where this significance occurs more clearly:
-
-Multiple Comparison of Means - Tukey HSD,FWER=0.05
-==============================================
-group1 group2 meandiff  lower    upper  reject
-----------------------------------------------
- Fall  Spring 15.4918   7.8218  23.1618  True 
- Fall  Summer  6.2485  -4.1885  16.6855 False 
- Fall  Winter  5.662   -1.9857  13.3096 False 
-Spring Summer -9.2433  -17.9374 -0.5492  True 
-Spring Winter -9.8298  -14.8441 -4.8156  True 
-Summer Winter -0.5865  -9.2609   8.0878 False 
-----------------------------------------------
+Given the results of the ANOVA, (p value < F - Statistic, 1.7e-8 < 13.47), I can reject the null hypothesis. I used a tukey HSD test to see where this significance occurs more clearly, and I could reject the null at every pairing with Spring, and no other pairing (Winter-Fall, Winter-Summer, Fall-Summer). 
 
 It is clear that I listen to significantly more popular music in the spring than in any other season! Something about the change in weather maybe
 
 ## 2.3 Audio Features
 Let's look back at the audio features and continuous variables.
+
 <img src="img/audio_features.png">
 
 Let's look into the variety of my music taste a little more. I want to compare the standard deviations of each feature to see if there are categories where I am more open-minded. Since all audio features above are on a scale from 0 - 1, we can look at them all simultaneously. Understanding instrumentalness had a high number of 0's to begin with, I removed them temporarily after looking at the standard deviation with and without them 
+
 <img src="img/features_stddev.png">
 
 It seems I have a more narrow taste in music when it comes to speechiness, liveness, and danceability, than I do for other features such as instrumentalness, acousticness, or valence. Adding back in features like duration, tempo, and popularity, next i checked how they are correlated:
+
 <img src="img/features_heatmap.png">
+
 Loudness and energy seem highly correlated (keeping in mind for any model building in the future), which makes sense. Those were the only two variables with a correlation above .7
 
 ## 2.4 Key
@@ -336,6 +332,10 @@ It seems I listen to Major songs more than Minor. How does that look with season
 <img src="img/mode_season.png">
 In the spring it seems like I am listening to majority major songs (33% difference), where the remaining seasons get closer to an equal split (summer 23% difference, winter 21% difference, and fall 15% difference). 
 
-Since valence has to do with the eomition evoked from a song, and major music tends to be happy while minor music tends to be sad, I wanted to see if there was any difference between my major and minor songs. 
+Since valence has to do with the eomition evoked from a song, and major music tends to be happy while minor music tends to be sad, I wanted to see if there was any difference between my major and minor songs.
+
 <img src="img/mode_valence.png">
+
 After looking at the boxplot (and a quick T-test), it was apparent that mode had nothing to do with valence of a song at least in the small biased sample of my music!
+
+
