@@ -10,7 +10,6 @@ Education
 
 2019-2020
 :   **Flatiron School**; Data Science Bootcamp, *New York, NY* (MyTown)
-    
     Completed coursework consisting of Python, SQL, Statistics, Regression, Machine Learning Techniques, 
     Deep Learning, and NLP. End of module projects consisted of a completed Jupyter Notebook, blogpost, 
     and a presentation.
@@ -18,9 +17,7 @@ Education
 2012-2016
 :   **Princeton University**; BA Ecology and Evolutionary Biology, *Princeton, NJ*
     Senior Thesis: The Interaction Between Soundscape and Vegetation Structure in a Successional Forest. Managed and analyzed     large audio datasets across confounding variables. Independent research in Costa Rica included daily fieldwork and data       collection on vegetation, acoustics, and GPS measurements. Use of R and JMP for statistical analysis.
-
     Kenya Study Abroad, Spring 2015: Field coursework included Environmental Engineering, Biology of African Ecosystems and       Animals, African Landscapes, and Sustainable Development.
-    
     Other Coursework: Molecular, Ecology, and Evolutionary Biology, Chemistry, Physics, Statistics, Computer Science, Calculus
     
     
