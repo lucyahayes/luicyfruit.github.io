@@ -307,16 +307,25 @@ Let's look back at the audio features and continuous variables.
 
 ![AudioFeatures](https://luicyfruit.github.io/img/audio_features.png)
 
+Let's break these down to how they compare with the Spotify API Documentation of typical distributions. 
+- **Acousticness**: This typically sees a distribtion that's U shaped, with a high skew towards a 0 value that dips, and has a slight upturn at values approaching 1. My distribution is heavily skewed towards 0, signifying that I listen to **less** acoustic music than typically seen.
+- **Danceability**: This typically has a normal distribution around a mean value of ~.6. My distribution is fairly normal, but slight skewed towards higher values. with a mean score of .67, signifying I listen to dancier music than normal.
+- **Energy**: This typically has a distribution that's somewhat uniform, while being skewed closer to values of 1. My distribution lacks that uniform aspect and has more of a bell shape, but is still skewed closer to values of 1. Thus, I listen to fewer non-energetic songs than normal.
+- **Instrumentalness, Liveness, Speechiness, Tempo,** and **Valence**: All look very similar to the distribtions provided by Spotify. 
+
+Overall, it seems I listen to music that is less acoustic, more dance-y, and avoid non-energetic music than the distribution of music available on Spotify. 
 
 Let's look into the variety of my music taste a little more. I want to compare the standard deviations of each feature to see if there are categories where I am more open-minded. Since all audio features above are on a scale from 0 - 1, we can look at them all simultaneously. Understanding instrumentalness had a high number of 0's to begin with, I removed them temporarily after looking at the standard deviation with and without them 
 
 ![FeaturesStdDev](https://luicyfruit.github.io/img/feature_stddev.png)
 
-It seems I have a more narrow taste in music when it comes to speechiness, liveness, and danceability, than I do for other features such as instrumentalness, acousticness, or valence. Adding back in features like duration, tempo, and popularity, next i checked how they are correlated:
+It seems I have a more narrow taste in music when it comes to speechiness, liveness, and danceability, than I do for other features such as instrumentalness, acousticness, or valence. It's interesting to note that Danceability, Acousticness, and Energy were features that distinguished my taste from the distribution of music on Spotify, however of those three, danceability had a low standard deviation. Thus, the danceability of a song seems to play a very important role in how I choose music. 
+
+Adding back in features like duration, tempo, and popularity, next i checked how they are correlated:
 
 ![Heatmap](https://luicyfruit.github.io/img/features_heatmap.png)
 
-Loudness and energy seem highly correlated (keeping in mind for any model building in the future), which makes sense. Those were the only two variables with a correlation above .7. Acousticness and Energy were also negatively correlated (-0.63).
+Loudness and energy are highly correlated (keeping in mind for any model building in the future), which makes sense. Those were the only two variables with a correlation above .7. Acousticness and Energy were also negatively correlated (-0.63).
 
 ## 2.4 Key
 The way Spotify API classifies keys is using Pitch Class notation, where C = 0, C# = 1, D = 2, all the way up to B = 11. The audio features also include mode, which indicates if the key is major or minor (1 and 0 respectively) - thus resulting in 22 possible keys. For readability, I added a categorical variable of major/minor. 
@@ -326,7 +335,7 @@ The way Spotify API classifies keys is using Pitch Class notation, where C = 0, 
 | Major  |   356 |
 | Minor  |   214 |
 
-It seems I listen to Major songs more than Minor. How does that look with seasonality?
+It seems I listen to Major songs more than Minor. Knowing how I feel about New York Winters, and that major is associated with happy songs and minor sad, how does that look with seasonality?
 
 
 ![Mode](https://luicyfruit.github.io/img/mode_season.png)
