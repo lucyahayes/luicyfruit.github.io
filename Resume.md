@@ -9,81 +9,55 @@ Education
 ---------
 
 2019-2020
-:   **Flatiron School**; Data Science Bootcamp, *New York, NY* (MyTown)
+:   **Flatiron School**; Data Science Bootcamp, *New York, NY* 
+
     Completed coursework consisting of Python, SQL, Statistics, Regression, Machine Learning Techniques, 
     Deep Learning, and NLP. End of module projects consisted of a completed Jupyter Notebook, blogpost, 
     and a presentation.
 
 2012-2016
 :   **Princeton University**; BA Ecology and Evolutionary Biology, *Princeton, NJ*
-    Senior Thesis: The Interaction Between Soundscape and Vegetation Structure in a Successional Forest. Managed and analyzed     large audio datasets across confounding variables. Independent research in Costa Rica included daily fieldwork and data       collection on vegetation, acoustics, and GPS measurements. Use of R and JMP for statistical analysis.
-    Kenya Study Abroad, Spring 2015: Field coursework included Environmental Engineering, Biology of African Ecosystems and       Animals, African Landscapes, and Sustainable Development.
-    Other Coursework: Molecular, Ecology, and Evolutionary Biology, Chemistry, Physics, Statistics, Computer Science, Calculus
+
+    Senior Thesis: *The Interaction Between Soundscape and Vegetation Structure in a Successional Forest.*    Managed and analyzed large audio datasets across confounding variables. Independent research in Costa Rica included daily fieldwork and data collection on vegetation, acoustics, and GPS measurements. Use of R and JMP for statistical analysis.
     
+    Kenya Study Abroad, Spring 2015: Field coursework included Environmental Engineering, Biology of African Ecosystems and Animals, African Landscapes, and Sustainable Development.
+    
+    Other Coursework: Molecular, Ecology, and Evolutionary Biology, Chemistry, Physics, Statistics, Computer Science, Calculus
+
+2004-2012
+:   **Juilliard Pre-College**; Cello Performance, *New York, NY*  
     
 Experience
 ----------
 
-**Your Most Recent Work Experience:**
+**Stack Overflow:** *Business Intelligence Analyst*
+OCTOBER 2018 - PRESENT
 
-Short text containing the type of work done, results obtained,
-lessons learned and other remarks. Can also include lists and
-links:
+Responsible for building and automating reports, dashboards, views, and data models in Looker. Provided analysis for key stakeholders, and worked cross functionally with Finance, Data, Sales, Marketing, and Product teams on systems and reporting.
 
-* First item
+Projects: Predictive Churn Modeling, Revenue Optimality Analysis, Systems True Up Auditing, Database Modeling and Cleanup, Quarterly Review Analysis.
 
-* Item with [link](http://www.example.com). Links will work both in
-  the html and pdf versions.
+Use of R, Looker, Salesforce, Google Analytics, and Google Sheets/Excel.
 
-**That Other Job You Had**
 
-Also with a short description.
+**Sakaerat Environmental Research Station, Thailand** *Field Technician*
+AUGUST 2017 - NOVEMBER 2017
 
-Technical Experience
---------------------
+Collected and analyzed field data to determine how species adapt and coexist in agricultural Landscapes. Responsible for daily tracking of highly venomous snakes using radio telemetry, GIS, camera trapping, and biodiversity surveys.
 
-My Cool Side Project
-:   For items which don't have a clear time ordering, a definition
-    list can be used to have named items.
+[Published in British Herpetological Society](https://www.thebhs.org/publications/the-herpetological-bulletin/issue-number-143-spring-2018/1814-07-the-movements-and-habitat-preferences-of-a-malayan-krait-i-bungarus-candidus-i-in-an-agrarian-landscape), Spring 2018: Observations on the Movement and Habitat Preference of a Malayan Krait, Bungarus candidus, from an Agrarian Landscape in Thailand.
 
-    * These items can also contain lists, but you need to mind the
-      indentation levels in the markdown source.
-    * Second item.
+**Bevi** *New York Territory Manager*
+OCTOBER 2016 - JULY 2017
 
-Open Source
-:   List open source contributions here, perhaps placing emphasis on
-    the project names, for example the **Linux Kernel**, where you
-    implemented multithreading over a long weekend, or **node.js**
-    (with [link](http://nodejs.org)) which was actually totally
-    your idea...
-
-Programming Languages
-:   **first-lang:** Here, we have an itemization, where we only want
-    to add descriptions to the first few items, but still want to
-    mention some others together at the end. A format that works well
-    here is a description list where the first few items have their
-    first word emphasized, and the last item contains the final few
-    emphasized terms. Notice the reasonably nice page break in the pdf
-    version, which wouldn't happen if we generated the pdf via html.
-
-:   **second-lang:** Description of your experience with second-lang,
-    perhaps again including a [link] [ref], this time placing the url
-    reference elsewhere in the document to reduce clutter (see source
-    file). 
-
-:   **obscure-but-impressive-lang:** We both know this one's pushing
-    it.
-
-:   Basic knowledge of **C**, **x86 assembly**, **forth**, **Common Lisp**
-
-[ref]: https://github.com/githubuser/superlongprojectname
+Facilitated the end to end sales cycle for the Greater New York City Area. Responsibilities included cold prospecting, fielding inbound leads, crafting proposals, setting and taking meetings, and closing opportunities. Role encompassed all duties associated with an Account Executive, a Sales Development Representative, and an Account Manager.
 
 Skills
 ----------------------------------------
-
+* Languages:
+    * Python, R, LookML, SQL
 * Human Languages:
-     * English (native speaker)
+     * English, Spanish Working Proficiency
+* Other:
+    * Can drive a motorcycle, great at poaching eggs, and college competitive sailor 
 
-* Random tidbit
-
-* Other sort of impressive-sounding thing you did
