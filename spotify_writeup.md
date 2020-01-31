@@ -316,7 +316,7 @@ It seems I have a more narrow taste in music when it comes to speechiness, liven
 
 ![Heatmap](https://luicyfruit.github.io/img/features_heatmap.png)
 
-Loudness and energy seem highly correlated (keeping in mind for any model building in the future), which makes sense. Those were the only two variables with a correlation above .7
+Loudness and energy seem highly correlated (keeping in mind for any model building in the future), which makes sense. Those were the only two variables with a correlation above .7. Acousticness and Energy were also negatively correlated (-0.63).
 
 ## 2.4 Key
 The way Spotify API classifies keys is using Pitch Class notation, where C = 0, C# = 1, D = 2, all the way up to B = 11. The audio features also include mode, which indicates if the key is major or minor (1 and 0 respectively) - thus resulting in 22 possible keys. For readability, I added a categorical variable of major/minor. 
