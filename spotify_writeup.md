@@ -310,7 +310,7 @@ Let's look back at the audio features and continuous variables.
 
 Let's look into the variety of my music taste a little more. I want to compare the standard deviations of each feature to see if there are categories where I am more open-minded. Since all audio features above are on a scale from 0 - 1, we can look at them all simultaneously. Understanding instrumentalness had a high number of 0's to begin with, I removed them temporarily after looking at the standard deviation with and without them 
 
-![FeaturesStdDev](https://luicyfruit.github.io/img/features_stddev.png)
+![FeaturesStdDev](https://luicyfruit.github.io/img/feature_stddev.png)
 
 It seems I have a more narrow taste in music when it comes to speechiness, liveness, and danceability, than I do for other features such as instrumentalness, acousticness, or valence. Adding back in features like duration, tempo, and popularity, next i checked how they are correlated:
 
