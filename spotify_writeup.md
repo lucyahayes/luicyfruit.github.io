@@ -123,7 +123,8 @@ def audio_features(uris):
 ```
 When calling this on the track uris from the playlist data, we obtain a dataframe that looks like this:
 
-|    | uri                                  |   danceability |   energy |   key |   loudness |   mode |   speechiness | ... | |----|--------------------------------------|----------------|----------|-------|------------|--------|---------------|-----|
+|    | uri                                  |   danceability |   energy |   key |   loudness |   mode |   speechiness | ... | 
+|----|--------------------------------------|----------------|----------|-------|------------|--------|---------------|-----|
 |  0 | spotify:track:6xEHCWUvalb0fNYuAo591v |          0.487 |    0.787 |     5 |    -11.323 |      0 |        0.0945 |  ...| 
 |  1 | spotify:track:6v96ZIpQUtWMSUqlBlTif6 |          0.567 |    0.377 |     0 |    -11.851 |      0 |        0.0783 |  ...| 
 |  2 | spotify:track:62VWmsNoDmqT0Mj9oHHFVh |          0.701 |    0.445 |     1 |    -10.583 |      1 |        0.0834 |  ...| 
@@ -199,7 +200,7 @@ I call the read_tracks and audio_features functions on the top-tracks, merge tho
 ## 1.5 Read in Saved Tracks
 Reading in saved tracks required a new scope again ('user_saved_tracks'). This followed the same steps as reading in my top tracks except this time there was an added_at date, so I didn't need to use estimates. I used the read_tracks and audio_features function on this data, and appended to the main dataframe. The API limit was 20 songs (even though I have many more saved!) so this didn't account for too many more songs, especially seeing how some were duplicates. 
 
-Lastly, I removed those duplicates to get a dataframe with 570 entries, with the following variables (as defined in the [Spotify API Documentation](https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/):
+Lastly, I removed those duplicates to get a dataframe with 570 entries, with the following variables (as defined in the [Spotify API Documentation](https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/)):
 
 - **Uri**: The Spotify URI for the track.
 - **Artist**: The Artist who performed the track
@@ -226,7 +227,47 @@ Generally speaking, songs that are being played a lot now will have a higher pop
 It is important to note the scale of these features: Valence, Liveness, Instrumentalness, Acousticness, Speechiness, Energy, and Danceability are all on a scale from 0 to 1, where Time Signature, Tempo, Popularity and Loudness are not. It is also important to point out that although key is numerical in this case, the integers should be treated as categories, as they follow the notes of the scale rather than having any real numerical value. The Spotify API Documentation also provides typical distributions of these metrics, many of which are not distrubuted normally. 
 
 # 2. Data Exploration and Analysis
-# 2.1 Top Artists
+I want to get a feel for this dataset. Since I will be looking into music taste over time, I looked into the amount of data I had for each year:
+| Year | Count |
+|------|-------|
+| 2020 |   80  |
+| 2019 |   318 |
+| 2018 |   67  |
+| 2017 |   105 |
+I know I took a break from Spotify in 2018, so this data makes sense. I wanted to further look at seasonality in terms of months, however the population size for each month would be too small for any robust analysis. I decided to categorize months into (New York) seasons to explore if there was any weather related music taste differences. 
+```python
+seasons = []
+for i in spotify_df.added_month:
+    if i in (1,2,3,12):
+        s = "Winter"
+    if i in (4, 5, 6):
+        s = "Spring"
+    if i in (7,8,9):
+        s = "Summer"
+    if i in (10, 11):
+        s = "Fall"
+    seasons.append(s)
+spotify_df['seasons'] = seasons
+```
+| Season | Count |
+|--------|-------|
+| Winter |   232 |
+| Spring |   220 |
+| Summer |   57  |
+| Fall   |   61  |
+
+Cool. Next, to get a general feel for the continuous variables, I used `Pandas Profiling` to look at quick distributions, correlation matrices, and zero instances. Overall, the songs in my library have low levels of acousticness, liveness, and speechiness, and high levels of danceability, enery, and loudness. Valence, key, mode, and popularity didn't show any real trend. There were warnings for high numbers of zeros in instrumentalness, key, and popularity. Since a 0 value for key is related to an actual note, it's okay to ignore that, but for instrumentalness and popularity I will be cautious moving forward
+
+In terms of how these are correlated: 
+-  **Acousticness** is negatively correlated with energy and loudness 
+-  **Duration** is positively correlated with instrumentalness 
+-  **Loudness** and **Energy** are very positively correlated 
+
+I will explore this further when I look at these features more closely. 
+
+## 2.1 Top Artists
+I wanted to see who my top artists were, which came at a bit of a surprise! I did not realize I was such a Britney Spears and NYSYNC fan but I guess the data doesn't lie... 
+
 |     | artist         |   uri |
 |-----|----------------|-------|
 |  33 | Bassnectar     |    22 |
@@ -244,3 +285,57 @@ It is important to note the scale of these features: Valence, Liveness, Instrume
 <img style="float: right;" width="100" height="100" src="img/steely_dan.jpg">
 <img style="float: right;" width="100" height="100" src="img/deadmau5.jpg">
 
+## 2.2 Popularity
+I thought the popularity metric was very interesting and decided to look further into it. The distribution of my library's popularity looked like this:
+<img src="img/popularity_hist.png">
+Since there were a lot of zeros (missing data), I dropped them from the dataset temporarily to dive a little deeper into this metric. I wanted to see how the seasons affected my music taste, i.e. do I listen to different levels of popular music in different seasons? 
+<img src="img/popularity_boxplot.png">
+Since spring looked like it was different between the other seasons, I decided to run an ANOVA to see if this trend was significant. 
+**Null Hypothesis**: Season has no affect on popularity of songs discovered
+**Alternate Hypothesis:** Season affects popularity of songs discovered
+```python
+results = ols('popularity ~ C(seasons)', data=temp).fit()
+results.summary()
+```
+Given the results of this ANOVA, (p value < F - Statistic), I can reject the null hypothesis. I used a tukey HSD test to see where this significance occurs more clearly:
+
+Multiple Comparison of Means - Tukey HSD,FWER=0.05
+==============================================
+group1 group2 meandiff  lower    upper  reject
+----------------------------------------------
+ Fall  Spring 15.4918   7.8218  23.1618  True 
+ Fall  Summer  6.2485  -4.1885  16.6855 False 
+ Fall  Winter  5.662   -1.9857  13.3096 False 
+Spring Summer -9.2433  -17.9374 -0.5492  True 
+Spring Winter -9.8298  -14.8441 -4.8156  True 
+Summer Winter -0.5865  -9.2609   8.0878 False 
+----------------------------------------------
+
+It is clear that I listen to significantly more popular music in the spring than in any other season! Something about the change in weather maybe
+
+## 2.3 Audio Features
+Let's look back at the audio features and continuous variables.
+<img src="img/audio_features.png">
+
+Let's look into the variety of my music taste a little more. I want to compare the standard deviations of each feature to see if there are categories where I am more open-minded. Since all audio features above are on a scale from 0 - 1, we can look at them all simultaneously. Understanding instrumentalness had a high number of 0's to begin with, I removed them temporarily after looking at the standard deviation with and without them 
+<img src="img/features_stddev.png">
+
+It seems I have a more narrow taste in music when it comes to speechiness, liveness, and danceability, than I do for other features such as instrumentalness, acousticness, or valence. Adding back in features like duration, tempo, and popularity, next i checked how they are correlated:
+<img src="img/features_heatmap.png">
+Loudness and energy seem highly correlated (keeping in mind for any model building in the future), which makes sense. Those were the only two variables with a correlation above .7
+
+## 2.4 Key
+The way Spotify API classifies keys is using Pitch Class notation, where C = 0, C# = 1, D = 2, all the way up to B = 11. The audio features also include mode, which indicates if the key is major or minor (1 and 0 respectively) - thus resulting in 22 possible keys. For readability, I added a categorical variable of major/minor. 
+
+| Mode   | Count |
+|--------|-------|
+| Major  |   356 |
+| Minor  |   214 |
+
+It seems I listen to Major songs more than Minor. How does that look with seasonality?
+<img src="img/mode_season.png">
+In the spring it seems like I am listening to majority major songs (33% difference), where the remaining seasons get closer to an equal split (summer 23% difference, winter 21% difference, and fall 15% difference). 
+
+Since valence has to do with the eomition evoked from a song, and major music tends to be happy while minor music tends to be sad, I wanted to see if there was any difference between my major and minor songs. 
+<img src="img/mode_valence.png">
+After looking at the boxplot (and a quick T-test), it was apparent that mode had nothing to do with valence of a song at least in the small biased sample of my music!
