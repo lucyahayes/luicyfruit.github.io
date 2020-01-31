@@ -224,3 +224,23 @@ Generally speaking, songs that are being played a lot now will have a higher pop
 - **Time Signature**: 	An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure)
 
 It is important to note the scale of these features: Valence, Liveness, Instrumentalness, Acousticness, Speechiness, Energy, and Danceability are all on a scale from 0 to 1, where Time Signature, Tempo, Popularity and Loudness are not. It is also important to point out that although key is numerical in this case, the integers should be treated as categories, as they follow the notes of the scale rather than having any real numerical value. The Spotify API Documentation also provides typical distributions of these metrics, many of which are not distrubuted normally. 
+
+# 2. Data Exploration and Analysis
+# 2.1 Top Artists
+|     | artist         |   uri |
+|-----|----------------|-------|
+|  33 | Bassnectar     |    22 |
+| 301 | Steely Dan     |    21 |
+| 285 | San Fermin     |    20 |
+| 360 | deadmau5       |    13 |
+| 121 | Frank Ocean    |     7 |
+|  24 | Ariana Grande  |     7 |
+|  50 | Britney Spears |     7 |
+|  88 | Disclosure     |     6 |
+|  89 | Djavan         |     6 |
+|   0 | *NSYNC         |     5 |
+
+<img align="right" width="100" height="100" src="img/bassnectar.jpg">
+<img align="right" width="100" height="100" src="img/steely_dan.jpg">
+<img align="right" width="100" height="100" src="img/deadmau5.jpg">
+
