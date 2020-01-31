@@ -240,7 +240,7 @@ It is important to note the scale of these features: Valence, Liveness, Instrume
 |  89 | Djavan         |     6 |
 |   0 | *NSYNC         |     5 |
 
-<img align="right" width="100" height="100" src="img/bassnectar.jpg">
-<img align="right" width="100" height="100" src="img/steely_dan.jpg">
-<img align="right" width="100" height="100" src="img/deadmau5.jpg">
+<img style="float: right;" width="100" height="100" src="img/bassnectar.jpg">
+<img style="float: right;" width="100" height="100" src="img/steely_dan.jpg">
+<img style="float: right;" width="100" height="100" src="img/deadmau5.jpg">
 
