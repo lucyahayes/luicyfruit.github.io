@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 01-31-2020
+date: 2020-01-31
 title: "What is my Music Taste?"
 ---
 
