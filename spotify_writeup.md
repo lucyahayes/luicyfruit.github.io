@@ -228,12 +228,14 @@ It is important to note the scale of these features: Valence, Liveness, Instrume
 
 # 2. Data Exploration and Analysis
 I want to get a feel for this dataset. Since I will be looking into music taste over time, I looked into the amount of data I had for each year:
+
 | Year | Count |
 |------|-------|
 | 2020 |   80  |
 | 2019 |   318 |
 | 2018 |   67  |
 | 2017 |   105 |
+
 I know I took a break from Spotify in 2018, so this data makes sense. I wanted to further look at seasonality in terms of months, however the population size for each month would be too small for any robust analysis. I decided to categorize months into (New York) seasons to explore if there was any weather related music taste differences. 
 ```python
 seasons = []
