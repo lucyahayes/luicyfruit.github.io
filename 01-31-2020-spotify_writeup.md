@@ -1,3 +1,9 @@
+---
+layout: post
+date: 01-31-2020
+title: "What is my Music Taste?"
+---
+
 # What is My Music Taste?
 
 ## An analysis using the Spotify API
