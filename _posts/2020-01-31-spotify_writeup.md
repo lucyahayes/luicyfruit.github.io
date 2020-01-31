@@ -2,6 +2,8 @@
 layout: post
 date: 2020-01-31
 title: "What is my Music Taste?"
+subtitle: "An analysis using the Spotify API"
+header-img:"img/music.png"
 ---
 
 # What is My Music Taste?
