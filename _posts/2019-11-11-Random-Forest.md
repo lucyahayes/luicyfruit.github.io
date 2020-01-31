@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Predicting Cover-Type"
+title: "Predicting Cover-Type of a Forest"
+subtitle: "Using ML Methods to predict the Cover-Type of a Colorado Forest Dataset"
 date: 2019-11-11
+header-img: "img/forest.jpg"
 ---
-
-# Predicting Cover-Type of a Forest
 
 This project explores using Machine Learning methods to predict the type of forest cover an area would have, given parameters such as soil type, elevation, distance to water, and amount of shade. The dataset was obtained from the UCI Machine Learning Database. I was particularly drawn to this dataset because it is an example of using Machine Learning in the ecology world, where I understand the amount of field work that goes into obtaining these samples and datapoints. Aka, wouldn't it be great to use ML to scale down on some of that manual work!
 
