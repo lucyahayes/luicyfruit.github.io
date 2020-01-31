@@ -291,7 +291,7 @@ I thought the popularity metric was very interesting and decided to look further
 
 Since there were a lot of zeros (missing data), I dropped them from the dataset temporarily to dive a little deeper into this metric. I wanted to see how the seasons affected my music taste, i.e. do I listen to different levels of popular music in different seasons? 
 
-![Popularity_Boxplot](https://luicyfruit.github.io/img/popularity_boxplot.png)
+![Popularity_Boxplot](https://luicyfruit.github.io/img/popularity_box.png)
 
 Since spring looked like it was different between the other seasons, I decided to run an ANOVA to see if this trend was significant. 
 **Null Hypothesis**: Season has no affect on popularity of songs discovered
