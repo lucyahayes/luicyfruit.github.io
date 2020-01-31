@@ -1,3 +1,8 @@
+---
+layout: post
+title: "Predicting Cover-Type of a Forest Using Random Forests
+date: 2019-11-11
+---
 
 # Predicting Cover-Type of a Forest
 
